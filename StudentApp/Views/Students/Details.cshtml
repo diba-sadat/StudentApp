@@ -1,0 +1,39 @@
+﻿@model StudentApp.Models.Students
+
+@{
+    ViewData["Title"] = "Student Details";
+}
+
+<h1>Student Details</h1>
+
+@if (Model != null)
+{
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">@Model.FirstName @Model.LastName</h5>
+            <dl class="row">
+                <dt class="col-sm-3">Address</dt>
+                <dd class="col-sm-9">@Model.Address</dd>
+
+                <dt class="col-sm-3">Phone</dt>
+                <dd class="col-sm-9">@Model.Phone</dd>
+
+                <dt class="col-sm-3">Age</dt>
+                <dd class="col-sm-9">@Model.Age</dd>
+
+                <dt class="col-sm-3">Birth Date</dt>
+                <dd class="col-sm-9">@Model.BirthDate?.ToString("yyyy-MM-dd")</dd>
+
+                <dt class="col-sm-3">Math Grade</dt>
+                <dd class="col-sm-9">@Model.MathGrade</dd>
+
+                <dt class="col-sm-3">Physics Grade</dt>
+                <dd class="col-sm-9">@Model.PhysicsGrade</dd>
+            </dl>
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-warning">Student not found.</div>
+}

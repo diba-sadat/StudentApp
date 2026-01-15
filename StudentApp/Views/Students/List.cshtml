@@ -1,0 +1,44 @@
+﻿@model IEnumerable<StudentApp.Models.Students>
+
+@{
+    ViewData["Title"] = "Students List";
+}
+
+<h1>Students List</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>View</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var student in Model)
+            {
+                <tr>
+                    <td>@student.FirstName</td>
+                    <td>@student.LastName</td>
+                    <td>@student.Age</td>
+                    <td>
+                        <a asp-controller="Students" asp-action="Details" asp-route-id="@student.Id" class="btn btn-info">View</a>
+                    </td>
+                    <td>
+                        <a asp-controller="Students" asp-action="Delete" asp-route-id="@student.Id" class="btn btn-info">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="8" class="text-center">No students found.</td>
+            </tr>
+        }
+    </tbody>
+</table>
