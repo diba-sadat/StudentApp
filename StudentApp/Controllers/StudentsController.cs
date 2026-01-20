@@ -22,6 +22,11 @@ namespace StudentApp.Controllers
             return View();
         }
 
+        public IActionResult Update()
+        {
+            return View();
+        }
+
         public IActionResult NotFound()
         {
             return View();
@@ -64,6 +69,33 @@ namespace StudentApp.Controllers
             _context.Add(model);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(Students model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var student = await _context.Set<Students>().FirstOrDefaultAsync(s => s.Id == model.Id);
+            if (student == null)
+            {
+                return RedirectToAction(nameof(NotFound));
+            }
+
+            student.FirstName = model.FirstName;
+            student.LastName = model.LastName;
+            student.Address = model.Address;
+            student.Phone = model.Phone;
+            student.Age = model.Age;
+            student.BirthDate = model.BirthDate;
+            student.MathGrade = model.MathGrade;
+            student.PhysicsGrade = model.PhysicsGrade;
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(List));
         }
     }
 }
