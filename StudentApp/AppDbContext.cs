@@ -11,5 +11,6 @@ namespace StudentApp
         }
 
         public DbSet<Students> Students { get; set; }
+        public DbSet<Teachers> Teachers { get; set; }
     }
 }

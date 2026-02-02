@@ -27,7 +27,7 @@ namespace StudentApp.Controllers
             return View();
         }
 
-        public IActionResult NotFound()
+        public IActionResult CustomNotFound()
         {
             return View();
         }
