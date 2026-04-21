@@ -1,0 +1,44 @@
+﻿@model IEnumerable<StudentApp.Models.Lessons>
+
+@{
+    ViewData["Title"] = "Lessons List";
+}
+
+<h1>Lessons List</h1>
+<a asp-controller="Lessons" asp-action="Create" class="btn btn-primary mb-3">Create New Lesson</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>View</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var lesson in Model)
+            {
+                <tr>
+                    <td>@lesson.Name</td>
+                    <td>
+                        <a asp-controller="Lessons" asp-action="Details" asp-route-id="@lesson.Id" class="btn btn-info">View</a>
+                    </td>
+                    <td>
+                        <a asp-controller="Lessons" asp-action="Delete" asp-route-id="@lesson.Id" class="btn btn-info">Delete</a>
+                    </td>
+                    <td>
+                        <a asp-controller="Lessons" asp-action="Update" asp-route-id="@lesson.Id" class="btn btn-info">Update</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="8" class="text-center">No lessons found.</td>
+            </tr>
+        }
+    </tbody>
+</table>
