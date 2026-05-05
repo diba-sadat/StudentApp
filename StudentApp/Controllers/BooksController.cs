@@ -14,8 +14,8 @@ namespace StudentApp.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var lessons = await _context.Books.ToListAsync();
-            return View(Books);
+            var books = await _context.Books.ToListAsync();
+            return View(books);
         }
 
         public IActionResult Create()
@@ -28,14 +28,14 @@ namespace StudentApp.Controllers
         {
             if (!ModelState.IsValid) return View(model);
 
-            _context.Lessons.Add(model);
+            _context.Books.Add(model);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> Details(int id)
         {
-            var Book = await _context.Lessons.FirstOrDefaultAsync(l => l.Id == id);
+            var Book = await _context.Books.FirstOrDefaultAsync(l => l.Id == id);
             if (Book == null)
             {
                 return NotFound();
@@ -45,7 +45,7 @@ namespace StudentApp.Controllers
 
         public async Task<IActionResult> Update(int id)
         {
-            var Book = await _context.Lessons.FindAsync(id);
+            var Book = await _context.Books.FindAsync(id);
             if (Book == null)
             {
                 return NotFound();
@@ -54,11 +54,11 @@ namespace StudentApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(Book model)
+        public async Task<IActionResult> Update(Books model)
         {
             if (!ModelState.IsValid) return View(model);
 
-            var Book = await _context.Lessons.FindAsync(model.Id);
+            var Book = await _context.Books.FindAsync(model.Id);
             if (Book == null)
             {
                 return NotFound();
