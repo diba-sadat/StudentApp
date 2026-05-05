@@ -1,0 +1,44 @@
+﻿@model IEnumerable<StudentApp.Models.Books>
+
+@{
+    ViewData["Title"] = "Books List";
+}
+
+<h1>Books List</h1>
+<a asp-controller="Books" asp-action="Create" class="btn btn-primary mb-3">Create New Book</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>View</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var Book in Model)
+            {
+                <tr>
+                    <td>@Book.Name</td>
+                    <td>
+                        <a asp-controller="Books" asp-action="Details" asp-route-id="@Book.Id" class="btn btn-info">View</a>
+                    </td>
+                    <td>
+                        <a asp-controller="Books" asp-action="Delete" asp-route-id="@Book.Id" class="btn btn-info">Delete</a>
+                    </td>
+                    <td>
+                        <a asp-controller="Books" asp-action="Update" asp-route-id="@Book.Id" class="btn btn-info">Update</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="8" class="text-center">No books found.</td>
+            </tr>
+        }
+    </tbody>
+</table>

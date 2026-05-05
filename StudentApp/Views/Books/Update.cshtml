@@ -1,10 +1,10 @@
-﻿@model StudentApp.Models.Lessons 
+﻿@model StudentApp.Models.Books
 
 @{
-    ViewData["Title"] = "Update Lesson";
+    ViewData["Title"] = "Update Book";
 }
 
-<h2>Update Lesson</h2>
+<h2>Update Book</h2>
 
 <form asp-action="Update" method="post">
     <input type="hidden" asp-for="Id" />
@@ -14,4 +14,4 @@
         <input asp-for="Name" class="form-control" />
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
-    </form>
+</form>

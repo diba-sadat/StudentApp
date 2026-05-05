@@ -1,10 +1,10 @@
-﻿@model StudentApp.Models.Lessons 
+﻿@model StudentApp.Models.Books
 
 @{
-    ViewData["Title"] = "Lesson Details";
+    ViewData["Title"] = "Book Details";
 }
 
-<h1>Lesson Details</h1>
+<h1>Book Details</h1>
 
 @if (Model != null)
 {
@@ -12,14 +12,11 @@
         <div class="card-body">
             <h5 class="card-title">@Model.Name </h5>
             <dl class="row">
-               </dl>
+            </dl>
         </div>
     </div>
 }
 else
 {
-    <div class="alert alert-warning">Lesson not found.</div>
+    <div class="alert alert-warning">Book not found.</div>
 }
-
-
-            
