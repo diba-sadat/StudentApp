@@ -10,9 +10,9 @@ namespace StudentApp
         {
         }
 
-        public DbSet<Students> Students { get; set; }
-        public DbSet<Teachers> Teachers { get; set; }
-        public DbSet<Lessons> Lessons { get; set; }
-        public DbSet<Books> Books { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<Lesson> Lessons { get; set; }
+        public DbSet<Book> Books { get; set; }
     }
 }

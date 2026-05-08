@@ -24,7 +24,7 @@ namespace StudentApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Lessons model)
+        public async Task<IActionResult> Create(Lesson model)
         {
             if (!ModelState.IsValid) return View(model);
 
@@ -54,7 +54,7 @@ namespace StudentApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(Lessons model)
+        public async Task<IActionResult> Update(Lesson model)
         {
             if (!ModelState.IsValid) return View(model);
 

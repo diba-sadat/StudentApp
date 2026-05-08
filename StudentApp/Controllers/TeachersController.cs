@@ -34,7 +34,7 @@ namespace StudentApp.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            var teacher = await _context.Set<Teachers>().FirstOrDefaultAsync(s => s.Id == id);
+            var teacher = await _context.Set<Teacher>().FirstOrDefaultAsync(s => s.Id == id);
             if (teacher == null)
             {
                 return RedirectToAction(nameof(NotFound));
@@ -44,7 +44,7 @@ namespace StudentApp.Controllers
 
         public async Task<IActionResult> Delete(int id)
         {
-            var teacher = await _context.Set<Teachers>().FirstOrDefaultAsync(s => s.Id == id);
+            var teacher = await _context.Set<Teacher>().FirstOrDefaultAsync(s => s.Id == id);
             if (teacher == null)
             {
                 return RedirectToAction(nameof(NotFound));
@@ -56,12 +56,12 @@ namespace StudentApp.Controllers
 
         public async Task<IActionResult> List()
         {
-            var teachers = await _context.Set<Teachers>().ToListAsync();
+            var teachers = await _context.Set<Teacher>().ToListAsync();
             return View(teachers);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Teachers teacher)
+        public async Task<IActionResult> Create(Teacher teacher)
         {
             if (ModelState.IsValid)
             {
@@ -73,7 +73,7 @@ namespace StudentApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(Teachers teacher)
+        public async Task<IActionResult> Update(Teacher teacher)
         {
             if (ModelState.IsValid)
             {
