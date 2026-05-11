@@ -34,7 +34,7 @@ namespace StudentApp.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            var student = await _context.Set<Students>().FirstOrDefaultAsync(s => s.Id == id);
+            var student = await _context.Set<Student>().FirstOrDefaultAsync(s => s.Id == id);
             if (student == null)
             {
                 return RedirectToAction(nameof(NotFound));
@@ -44,7 +44,7 @@ namespace StudentApp.Controllers
 
         public async Task<IActionResult> Delete(int id)
         {
-            var student = await _context.Set<Students>().FirstOrDefaultAsync(s => s.Id == id);
+            var student = await _context.Set<Student>().FirstOrDefaultAsync(s => s.Id == id);
             if (student == null)
             {
                 return RedirectToAction(nameof(NotFound));
@@ -57,12 +57,12 @@ namespace StudentApp.Controllers
 
         public async Task<IActionResult> List()
         {
-            var students = await _context.Set<Students>().ToListAsync();
+            var students = await _context.Set<Student>().ToListAsync();
             return View(students);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Students model)
+        public async Task<IActionResult> Create(Student model)
         {
             if (!ModelState.IsValid) return View(model);
 
@@ -72,14 +72,14 @@ namespace StudentApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(Students model)
+        public async Task<IActionResult> Update(Student model)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
-            var student = await _context.Set<Students>().FirstOrDefaultAsync(s => s.Id == model.Id);
+            var student = await _context.Set<Student>().FirstOrDefaultAsync(s => s.Id == model.Id);
             if (student == null)
             {
                 return RedirectToAction(nameof(NotFound));

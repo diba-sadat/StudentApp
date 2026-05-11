@@ -2,7 +2,7 @@
 
 namespace StudentApp.Models
 {
-    public class Books 
+    public class Book 
     {
         [Key]
         public int Id { get; set; }

@@ -24,7 +24,7 @@ namespace StudentApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Books model)
+        public async Task<IActionResult> Create(Book model)
         {
             if (!ModelState.IsValid) return View(model);
 
@@ -35,52 +35,60 @@ namespace StudentApp.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            var Book = await _context.Books.FirstOrDefaultAsync(l => l.Id == id);
-            if (Book == null)
+            var book = await _context.Books.FirstOrDefaultAsync(l => l.Id == id);
+
+            if (book is null)
             {
                 return NotFound();
+                //return BadRequest();
             }
-            return View(Book);
+
+            return View(book);
         }
 
         public async Task<IActionResult> Update(int id)
         {
-            var Book = await _context.Books.FindAsync(id);
-            if (Book == null)
+            var book = await _context.Books.FindAsync(id);
+
+            if (book is null)
             {
                 return NotFound();
             }
-            return View(Book);
+
+            return View(book);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(Books model)
+        public async Task<IActionResult> Update(Book model)
         {
-            if (!ModelState.IsValid) return View(model);
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
 
-            var Book = await _context.Books.FindAsync(model.Id);
-            if (Book == null)
+            var book = await _context.Books.FindAsync(model.Id);
+
+            if (book == null)
             {
                 return NotFound();
             }
 
-            Book.Name = model.Name;
+            book.Name = model.Name;
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> Delete(int id)
         {
-            var Book = await _context.Books.FindAsync(id);
-            if (Book == null)
+            var book = await _context.Books.FindAsync(id);
+            if (book == null)
             {
                 return NotFound();
             }
 
-            _context.Books.Remove(Book);
+            _context.Books.Remove(book);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
     }
 }

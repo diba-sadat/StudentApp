@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StudentApp.Models
 {
-    public class Teachers
+    public class Student
     {
         [Key]
         public int Id { get; set; }
@@ -23,8 +24,14 @@ namespace StudentApp.Models
 
         public byte? Age { get; set; }
 
-        [DataType(DataType.Date)]
+        [DataType(DataType.Date)] 
 
         public DateOnly? BirthDate { get; set; }
+
+        [Column(TypeName = "decimal(4,2)")]
+        public decimal? MathGrade { get; set; }
+
+        [Column(TypeName = "decimal(4,2)")]
+        public decimal? PhysicsGrade { get; set; }
     }
 }
